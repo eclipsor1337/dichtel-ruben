@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - No Name</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/3.1.0/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/output.css">
+    <script>
+        // Fonction pour envoyer l'email
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !message) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            // mailto
+            const mailtoUrl = `mailto:ruben.dichtel@epita.fr?subject=Contact depuis votre CV en ligne&body=De: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
+            
+            // client de messagerie
+            window.location.href = mailtoUrl;
+            
+            // confirmation
+            document.getElementById('confirmation').classList.remove('hidden');
+            
+            // Réinitialiser
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-base-100 shadow-lg">
+        <div class="container mx-auto p-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-xl font-bold">No Name</a>
+                <a href="index.html" class="btn btn-outline">Retour au CV</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 flex-grow">
+        <div class="card bg-base-100 shadow-xl max-w-2xl mx-auto">
+            <div class="card-body">
+                <h2 class="card-title text-2xl mb-6">Formulaire de Contact</h2>
+                <p class="mb-4">
+                    Félicitations ! Vous avez correctement répondu à toutes les questions. 
+                    Vous pouvez maintenant me contacter en remplissant le formulaire ci-dessous.
+                </p>
+                
+                <form id="contact-form" class="space-y-4">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Nom</span>
+                        </label>
+                        <input type="text" id="name" placeholder="Votre nom" class="input input-bordered" required />
+                    </div>
+                    
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="email" id="email" placeholder="Votre email" class="input input-bordered" required />
+                    </div>
+                    
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Message</span>
+                        </label>
+                        <textarea id="message" class="textarea textarea-bordered h-32" placeholder="Votre message" required></textarea>
+                    </div>
+                    
+                    <div class="form-control mt-6">
+                        <button type="button" onclick="sendEmail()" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </form>
+                
+                <div id="confirmation" class="alert alert-success mt-4 hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>Votre message a été envoyé avec succès !</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-base-200 p-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Ruben Dichtel - Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>

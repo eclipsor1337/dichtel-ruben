@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+/* Animation pour le bouton brute force */
+.hacker-animation {
+  animation: hackerGlow 2s infinite, hackerTextGlow 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.hacker-animation:hover {
+  background-color: #1a1a1a;
+  animation: hackerGlow 1s infinite, hackerTextGlow 1s infinite, shake 0.5s infinite;
+  transform: scale(1.05);
+}
+@keyframes hackerGlow {
+  0% { box-shadow: 0 0 5px #ff0000; }
+  25% { box-shadow: 0 0 15px #ff7700; }
+  50% { box-shadow: 0 0 25px #ff0000; }
+  75% { box-shadow: 0 0 15px #ff7700; }
+  100% { box-shadow: 0 0 5px #ff0000; }
+}
+
+@keyframes hackerTextGlow {
+  0% { text-shadow: 0 0 5px #ff0000; }
+  50% { text-shadow: 0 0 10px #ff0000, 0 0 15px #ff0000; }
+  100% { text-shadow: 0 0 5px #ff0000; }
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Style pour la progression du brutforce */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.progress-gradient {
+  background-image: linear-gradient(45deg, #ff0000, #ff5500, #ff0000);
+  background-size: 200% 200%;
+  animation: gradientMove 2s linear infinite;
+}
