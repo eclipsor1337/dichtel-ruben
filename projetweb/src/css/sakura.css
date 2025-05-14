@@ -1,0 +1,134 @@
+.sakura-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+}
+
+.sakura-tree {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.sakura-tree.left {
+    left: -50px;
+    bottom: 0;
+}
+
+.sakura-tree.right {
+    right: -50px;
+    bottom: 0;
+}
+
+.sakura-tree svg {
+    width: 100%;
+    height: 100%;
+}
+
+.sakura-petal {
+    position: absolute;
+    background: #ffb7c5;
+    border-radius: 50% 0 50% 50%;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    transform-origin: center;
+    filter: drop-shadow(0 0 2px rgba(255, 183, 197, 0.3));
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+    }
+    25% {
+        transform: translateY(25vh) rotate(90deg) translateX(20px);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(-20px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) translateX(20px);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(0);
+    }
+}
+
+.sakura-blossom {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ffb7c5;
+    border-radius: 50%;
+    animation: sway linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.left-sakura {
+    left: 5%;
+    width: 15px;
+    height: 15px;
+}
+
+.right-sakura {
+    right: 5%;
+    width: 15px;
+    height: 15px;
+}
+
+/* Styles pour l'effet de zoom sur les sections */
+.section-container {
+    transition: all 0.3s ease-in-out;
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
+    margin: -1rem;
+}
+
+.section-container:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation de transition pour le texte */
+.section-container:hover * {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet de surbrillance sur le titre de la section */
+.section-container:hover h2 {
+    color: #ffb7c5;
+    transform: translateX(10px);
+}
+
+/* Effet de transition sur le contenu */
+.section-container:hover p,
+.section-container:hover li {
+    transform: translateX(5px);
+}
+
+/* Ajustement spécifique pour les sections de droite */
+.md\:w-2\/3 .section-container {
+    transform-origin: left center;
+    padding-right: 2rem;
+}
+
+.md\:w-2\/3 .section-container:hover {
+    transform: scale(1.05) translateX(1rem);
+} 
